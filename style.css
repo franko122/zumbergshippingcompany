@@ -49,6 +49,14 @@
         background-color: rgb(0, 77, 165);
         width: 30%;
     }
+    
+    .nows{ 
+        color:white;
+        border-radius: 4px;
+        border:none;
+        background-color: red;
+        width: 30%;
+    }
     .two3{
         width: 97%;
         margin: auto;
@@ -63,6 +71,10 @@
     .footer{
         width: 100%;
         background-color: rgb(0, 77, 165);
-        height:200px;
+    }
+    .us{
+        text-align: center;
+        color: white;
+        padding: 10px;
     }
 }
