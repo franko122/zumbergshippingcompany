@@ -11,6 +11,7 @@ function Secons() {
   button.addEventListener("click",()=>{
          if (input.value ==  tracktw ) {  
             window.location = "tracktwo.html";
+            return fasle
        }
        else{
         

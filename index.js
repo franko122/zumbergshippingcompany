@@ -10,6 +10,7 @@ function StartCode (){
     button.addEventListener("click", ()=>{
         if (input.value == tracknumbe ) { 
             window.location = "trackone.html";
+            return fasle
         }
         else{
             code.style.display="block"; 
