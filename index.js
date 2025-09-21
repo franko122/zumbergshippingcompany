@@ -7,11 +7,13 @@ function StartCode (){
      let tracknumbe = 63452452454
      let tracktw =  884989486533
 lide.addEventListener("click", ()=>{
-     let het = 250   
-        drive.style.height="250px";
+     let het = 0   
     if (drive.style.height == het) { 
-        drive.style.height="0px"; 
+        drive.style.height="250px"; 
        } 
+       else{ 
+        drive.style.height="0px";
+       }
 
 })
     button.addEventListener("click", ()=>{
