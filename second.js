@@ -13,8 +13,7 @@ function Secons() {
             window.location = "tracktwo.html";
             return fasle
        }
-       else{
-        
+       else{ 
             code.style.display="block"; 
             setTimeout(() => {
                  code.style.display="none"; 
