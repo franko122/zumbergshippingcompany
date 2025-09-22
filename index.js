@@ -21,7 +21,7 @@ lide.addEventListener("click", ()=>{
             window.location = "trackone.html";
             button.innerText="tracking"
             code.innerText="successfully tracking"
-             code.style.color="green
+             code.style.color="green"
             return fasle
         }
         else{
