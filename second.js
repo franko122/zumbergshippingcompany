@@ -18,6 +18,8 @@ function Secons() {
        }
        else{ 
             code.style.display="block"; 
+           code.innerText="Please insert a valid code "
+             code.style.color="red"
             setTimeout(() => {
                  code.style.display="none"; 
                   one.style.border=" rgb(0, 77, 165) solid 2px";
