@@ -20,6 +20,8 @@ lide.addEventListener("click", ()=>{
         if (input.value == tracknumbe ) { 
             window.location = "trackone.html";
             button.innerText="tracking"
+            code.innerText="successfully tracking"
+             code.style.color="green
             return fasle
         }
         else{
