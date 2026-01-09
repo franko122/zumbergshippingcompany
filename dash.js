@@ -18,4 +18,7 @@ function StartCode() {
                 earning.innerHTML="200"
                 ballance.innerHTML="500"    
 } 
+         refresh.addEventListener("click" , ()=>{
+                  alert("hi")
+         })
 StartCode();
