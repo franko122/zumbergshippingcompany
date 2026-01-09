@@ -2,6 +2,7 @@ function StartCode() {
          const earning = document.getElementById("earning");
          const dashin = document.getElementById("frank");
          const ballance = document.getElementById("balance");
+         const refresh = document.getElementById("refresh");
          const franklin = 'franklin' 
          const frank = "frank";
          const sheikh = "Sheikh";    
@@ -16,6 +17,5 @@ function StartCode() {
             if (dashin.innerText == franklin) {
                 earning.innerHTML="200"
                 ballance.innerHTML="500"    
-            }            
-}    
+} 
 StartCode();
