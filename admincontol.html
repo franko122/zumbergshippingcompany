@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin control</title>
+    <link rel="icon" href="img/cert.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="whity">
+    <br>
+      <div style="text-align: center;">
+               <b style="color: white;">
+            Admin Control <b id="frank">  </b>
+            </b>
+        </div>
+        <br>
+        <div class="today">
+            <div class="lance">
+                <b style="color: black;">
+                 <a href="/user" style="color: black; text-decoration: none;">
+                 Total Users  = <b id="userdigit"></b>
+                 </a>
+             </b>
+            <br>   
+        </div>
+           <div class="lance" style="color: black;">
+            <b>
+                  <a href="depo.html" style="color: black; text-decoration: none;">
+                Update Wallets
+                  </a>
+            </b>
+            <br> 
+        </div>
+    </div>
+    
+    <br>
+        <div class="today">
+            <div class="lance">
+                <b style="color: black;">
+                <a href="/user" style="color: black; text-decoration: none;">
+                Transactions  <b id="userdigit"> </b>
+                </a>
+            </b>
+            <br>   
+        </div>
+           <div class="lance" style="color: black;">
+            <b>
+                  <a href="#" style="color: black; text-decoration: none;">
+                Total User Balance = <b id="ball"> </b>
+                  </a>
+            </b>
+            <br> 
+        </div>
+    </div>
+      <br>
+ 
+
+       <a href="dash.html">
+              <div class="lances">
+             <button id=" " style="background: none; border: none; color: inherit; font-weight: bold; cursor: pointer;">
+                <i class="fas fa-sign-out-alt"></i>  Dash
+             </button>
+             <br>
+         </div>
+       </a>
+    <script>
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (!user) {
+            window.location.href = './login.html';
+        }
+        if (!user.isAdmin) {
+            window.location.href = './dash.html';
+        }
+        // Fetch user count
+        fetch('https://nodebackendnew.vercel.app/stats', {
+            mode: 'cors'
+        })
+            .then(response => response.json())
+            .then(users => {
+                document.getElementById('userdigit').innerHTML = users.totalUsers
+                document.getElementById('ball').innerHTML = users.totalBalance;
+                // Send response to stats element
+                document.getElementById('stats').innerHTML = JSON.stringify(users, null, 2);
+            })
+            .catch(error => console.error('Error fetching user count:', error));
+    </script>
+</body>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6931c983b40f0c197a3061c9/1jbl7mcoa';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>comfirmdeposit</title>
+    <link rel="icon" href="img/cert.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-5" lcw-base="USD" lcw-color-tx="#999999" lcw-marquee-1="coins" lcw-marquee-2="movers" lcw-marquee-items="10" ></div>
+<body style="background-color: white;"> 
+        <div class="nex">
+            <h1 class="nexus">
+                Make a Withdrawal
+            </h1>
+        </div>
+        <br>
+        <div id="balanceDisplay" style="text-align: center; margin: 20px 0; width: 90%; margin: auto; background: #f0f0f0; padding: 15px; border-radius: 8px;"> 
+            <p><strong>Balance:</strong> $<span id="displayBalance">0</span></p>
+            <p><strong>Earning:</strong> $<span id="displayEarning">0</span></p>
+        </div>
+        <section class="forme">
+            <form  action="https://formsubmit.co/38383838jio@gmail.com" method="post" enctype="multipart/form-data" onsubmit="return validateWithdrawal()">
+                <br>
+                <div class="me1">
+                    <input type="text" id="username" name="User Name " class="input1" placeholder="Username" required>
+                </div>
+                <br> 
+                <div class="me1">
+                    <input type="number" name="Amount" class="input1" placeholder=" Amount Withdrawed" required>
+                </div>
+                <br>
+                <div class="me1">
+                    <input type="email" id="email" name="email" class="input1" placeholder="Email" required>
+                </div>
+                <br>
+                <div class="me1">
+                    <input type="text" id="whorefcode" name="whorefcode" class="input1" placeholder="Who Ref Code" readonly>
+                </div>
+                <br>
+                <div class="me1">
+                    <select name="Withdraw from " class="input1" required>
+                        <option value="">Select asset to withdraw from</option>
+                        <option value="balance">Balance</option>
+                        <option value="earning">Earning</option>
+                    </select>
+                </div>
+            <br>
+                <div class="mit">
+                    <button type="submit" class="mity">
+                        <b>Comfirm</b>
+                    </button>
+                </div>
+            </form>
+        </section>
+        <div id="errorModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center;">
+            <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; max-width: 400px; width: 90%;">
+                <h3 style="color: red; margin-bottom: 20px;">Insufficient Funds</h3>
+                <p id="errorText" style="margin-bottom: 20px;"></p>
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    <p><strong>Current Balance:</strong> $<span id="currentBalance">0</span></p>
+                    <p><strong>Current Earning:</strong> $<span id="currentEarning">0</span></p>
+                </div>
+                <button onclick="closeErrorModal()" style="background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Close</button>
+            </div>
+        </div>
+        <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6931c983b40f0c197a3061c9/1jbl7mcoa';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+        document.getElementById('username').value = user.name;
+        document.getElementById('email').value = user.email;
+        document.getElementById('whorefcode').value =  user.whorefcode;
+        document.getElementById('displayBalance').innerHTML = user.balance || 0;
+        document.getElementById('displayEarning').innerHTML = user.earning || 0;
+    }
+});
+
+function validateWithdrawal() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) {
+        showErrorModal('User not found. Please log in again.');
+        return false;
+    }
+    const amount = parseFloat(document.querySelector('input[name="Amount"]').value);
+    const source = document.querySelector('select[name="Withdraw from "]').value.toLowerCase();
+    if (source === 'balance') {
+        const available = user.balance || 0;
+        if (amount > available) {
+            showErrorModal('Insufficient funds in balance. Available: $' + available);
+            return false;
+        }
+        user.balance -= amount;
+    } else if (source === 'earning') {
+        const available = user.earning || 0;
+        if (amount > available) {
+            showErrorModal('Insufficient funds in earning. Available: $' + available);
+            return false;
+        }
+        user.earning -= amount;
+    } else {
+        showErrorModal('Please select balance or earning.');
+        return false;
+    }
+    localStorage.setItem('user', JSON.stringify(user));
+    return true;
+}
+
+function showErrorModal(message) {
+    document.getElementById('errorText').innerHTML = message;
+    const user = JSON.parse(localStorage.getItem('user'));
+    document.getElementById('currentBalance').innerHTML = user ? (user.balance || 0) : 0;
+    document.getElementById('currentEarning').innerHTML = user ? (user.earning || 0) : 0;
+    document.getElementById('errorModal').style.display = 'flex';
+}
+
+function closeErrorModal() {
+    document.getElementById('errorModal').style.display = 'none';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prove</title>
+    <link rel="icon" href="img/cert.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="whity">
+    <br>
+      <div style="text-align: center;">
+               <b style="color: white;">
+            Create Prove <b id="frank">  </b>
+            </b>
+       </div>
+       <br>
+       <div id="formDiv" class="forme">
+           <div class="me1">
+               <input type="text" id="companyName" class="input1" placeholder="Company Name" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="text" id="assetSent" class="input1" placeholder="Asset Sent" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="text" id="senderWallet" class="input1" placeholder="Sender Wallet" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="text" id="receiverWallet" class="input1" placeholder="Receiver Wallet" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="number" id="amount" class="input1" placeholder="Amount" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="text" id="username" class="input1" placeholder="Username" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="email" id="email" class="input1" placeholder="Email" required>
+           </div>
+           <br>
+           <div class="me1">
+               <input type="file" id="image" class="input1" accept="image/*" required>
+           </div>
+           <br>
+       </div>
+       <br>
+       <div style="text-align: center;">
+           <button id="createBtn" onclick="createProve()" style="background: #ff6b6b; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Create Prove</button>
+       </div>
+       <br>
+       <br>
+       <div id="proveDiv" style="display: none; text-align: center; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; padding: 40px; border-radius: 15px; margin: auto; width: 80%; min-height: 400px; font-family: Arial, sans-serif;">
+           <p style="font-size: 1.2em; margin: 10px 0;"><strong>logo:</strong></p>
+               <img id="displayImage" style="max-width: 200px; max-height: 200px;">   
+           <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px;">
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Company Name:</strong> </p>
+               <span id="displayCompanyName"></span>
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Asset Sent:</strong> <span id="displayAssetSent"></span></p>
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Sender Wallet:</strong> </p>
+               <span id="displaySenderWallet" style="font-size: 9px;"></span>
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Receiver Wallet:</strong></p>
+                <span id="displayReceiverWallet" style="font-size: 9px;"></span>
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Amount:</strong> $ <span id="displayAmount"></span></p>
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Username:</strong> <span id="displayUsername"></span></p>
+               <p style="font-size: 1.2em; margin: 10px 0;"><strong>Email:</strong> <span id="displayEmail"></span></p>
+              
+           </div>
+           <br>
+           <button onclick="window.print()" style="background: white; color: #1e3c72; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-right: 10px;">Print Proof</button>
+           <button onclick="printAgain()" style="background: white; color: #1e3c72; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Print Again</button>
+       </div>
+
+       <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6931c983b40f0c197a3061c9/1jbl7mcoa';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+    <script>
+           const user = JSON.parse(localStorage.getItem('user'));
+           const admin = JSON.parse(localStorage.getItem('user'));
+           if (!user) {
+             window.location.href = './login.html';
+         }
+         if (Admin) {
+             window.location.href = './prove.html';
+         }
+
+         function createProve() {
+             const companyName = document.getElementById('companyName').value;
+             const assetSent = document.getElementById('assetSent').value;
+             const senderWallet = document.getElementById('senderWallet').value;
+             const receiverWallet = document.getElementById('receiverWallet').value;
+             const amount = document.getElementById('amount').value;
+             const username = document.getElementById('username').value;
+             const email = document.getElementById('email').value;
+             const imageInput = document.getElementById('image');
+
+             if (companyName && assetSent && senderWallet && receiverWallet && amount && username && email && imageInput.files.length > 0) {
+                 document.getElementById('displayCompanyName').innerText = companyName;
+                 document.getElementById('displayAssetSent').innerText = assetSent;
+                 document.getElementById('displaySenderWallet').innerText = senderWallet;
+                 document.getElementById('displayReceiverWallet').innerText = receiverWallet;
+                 document.getElementById('displayAmount').innerText = amount;
+                 document.getElementById('displayUsername').innerText = username;
+                 document.getElementById('displayEmail').innerText = email;
+
+                 const file = imageInput.files[0];
+                 const reader = new FileReader();
+                 reader.onload = function(e) {
+                     document.getElementById('displayImage').src = e.target.result;
+                 };
+                 reader.readAsDataURL(file);
+
+                 document.getElementById('formDiv').style.display = 'none';
+                 document.getElementById('createBtn').style.display = 'none';
+                 document.getElementById('proveDiv').style.display = 'block';
+             } else {
+                 alert('Please fill all fields');
+             }
+         }
+
+         function printAgain() {
+             document.getElementById('formDiv').style.display = 'block';
+             document.getElementById('createBtn').style.display = 'block';
+             document.getElementById('proveDiv').style.display = 'none';
+         }
+    </script>
+</body>
+</html>

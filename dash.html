@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" href="img/cert.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .crypto-chart {
+            background: black;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .crypto-chart h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+    </style>
+    </head>
+<script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-5" lcw-base="USD" lcw-color-tx="#999999" lcw-marquee-1="coins" lcw-marquee-2="movers" lcw-marquee-items="10" ></div>
+
+<body style="background-color: black; color: white;" class="whity">
+    <div id="loadingDiv" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgb(0, 0, 0); color: white; display: flex; justify-content: center; align-items: center; z-index: 3000;">
+        <div style="text-align: center;">
+            <div style="border: 5px solid #f3f3f3; border-top: 5px solid #ff6b6b; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
+          
+        </div>
+    </div>
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 1000;">
+        <i class="fas fa-bars" id="hamburger" style="font-size: 30px; color: white; cursor: pointer;"></i>
+    </div>
+    <div id="sidebar" style="position: fixed; top: 0; left: -300px; width: 300px; height: 100%; background: #333; color: white; padding: 20px; transition: left 0.3s; z-index: 9929;">
+        <div style="margin-bottom: 20px;">
+            <h3>Menu</h3>
+        </div>
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 15px;"><a href="/depo.html" style="color: white; text-decoration: none;"><i class="fas fa-plus-circle"></i> Make a Deposit</a></li>
+            <li style="margin-bottom: 15px;"><a href="/accde.html" style="color: white; text-decoration: none;"><i class="fas fa-user"></i> Account Details</a></li>
+            <li style="margin-bottom: 15px;"><a href="/myref.html" style="color: white; text-decoration: none;"><i class="fas fa-share-alt"></i> My Refcode</a></li>
+            <li style="margin-bottom: 15px;"><a href="#" id="logout-link" style="color: white; text-decoration: none;"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
+        </ul>
+    </div>
+    <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; z-index: 998;"></div>
+        <div style="text-align: center;">
+               <b>
+            Welcome <b id="frank">  </b>
+            </b>
+        </div>
+        <br>
+    <div class="today">
+        <div class="lance">
+            <b style="color: black;">
+                Balance
+            </b>
+            <br> 
+             <b style="font-size: 30px; color: black;">
+                 $
+             </b>
+              <b id="balancer" style="color: black; font-size: 30px;">
+             </b>
+        </div>
+           <div class="lance" style="color: black;">
+            <b>
+                Earning
+            </b>
+            <br>
+               <b style="font-size: 30px; color: black;">  
+                   $
+            </b> 
+            <b id="earnings" style="font-size: 30px;"> 
+            </b>
+        </div>
+    </div>
+    <br>
+     <div class="today" style="color: black;">
+        <div class="lance" id="cop">
+            <b>
+                 Ref Code
+            </b>
+            <br>
+            <b id="refCode">   
+            </b> 
+        </div> 
+    </div> 
+    <br>  
+<div class="today"> 
+           <div class="lance">
+            <b>
+             <a href="/depo.html" style="color: black; text-decoration: none;">
+                <i class="fas fa-plus-circle"></i>     Make a Deposit
+             </a>
+            </b>
+            <br> 
+        </div>
+        <a href="/withdraw.html" style="color: black; text-decoration: none;">
+            <div class="lance">
+            <b style="color: black;">
+            <b >      Withdrawal now
+            </b>
+        </a>
+        </div>
+    </div> 
+    <br> 
+    <div class="today">
+      
+           <div class="lance">
+           <a href="/accde.html" style="color: black; text-decoration: none;">
+            <b >
+              <i class="fas fa-user"></i>   Account Details
+            </a>
+            <br> 
+        </div>
+        <div class="lance">
+            <a href="/myref.html" style="color: black; text-decoration: none;">
+                 My Ref   Code
+            </a>
+            </b> 
+        </div>
+    </div>
+    <br>
+    <div class="today"> 
+            <div class="lancess">
+           <button id="refresh" style="background: none; border: none; color: inherit; font-weight: bold; cursor: pointer; margin-right: 20px;">
+               <i class="fas fa-refresh"></i> Update Account 
+            </button>
+            <br>
+        </div>
+         <div class="lances"> 
+            <button id="logout" style="background: none; border: none; color: inherit; font-weight: bold; cursor: pointer;">
+               <i class="fas fa-sign-out-alt"></i> Log Out
+            </button>
+            <br>
+        </div>
+    </div>
+    <br>
+    <div class="todays">   
+    <div id="adminControls" style="text-align: center; display: none;">
+        <button style="background: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">  <a href="/admin.html" style="color: white; text-decoration: none;">Admin Control</a></button>
+    </div>
+    </div> 
+     <section id="crypto-chart" class="crypto-chart">
+        <h2>Live Cryptocurrency Chart</h2>
+        <div id="tradingview-widget-container">
+            <div id="tradingview-widget"></div>
+        </div>
+    </section>
+    <br>
+      <div style="text-align: center; color: white;">
+       Alright Reserved Nexus Company 2010-2025
+      </div>
+      
+    <br>
+      <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6931c983b40f0c197a3061c9/1jbl7mcoa';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+   <script> 
+       // Hide loading div after 3 seconds when page loads
+       window.addEventListener('load', () => {
+           setTimeout(() => {
+               document.getElementById('loadingDiv').style.display = 'none';
+           }, 2000); // 3 second delay
+       });
+
+       // Validate if user exists in localStorage, redirect to create acc page if not
+       if (!localStorage.getItem('user')) {
+           window.location.href = './register.html';
+       }
+       // Get user data from localStorage
+       const user = JSON.parse(localStorage.getItem('user'));
+       if (user) {
+           // Populate username
+           if (user.name) {
+               document.getElementById('frank').innerHTML = user.name;
+           }
+           // Populate balance
+           if (user.balance !== undefined) {
+               document.getElementById('balancer').innerHTML = user.balance;
+           }
+           // Populate earning
+           if (user.earning !== undefined) {
+               document.getElementById('earnings').innerHTML = user.earning;
+           }
+           // Populate ref code
+           if (user.myRefCode) {
+               document.getElementById('refCode').innerHTML = user.myRefCode;
+               // Make cop element clickable to copy refCode
+               document.getElementById('cop').style.cursor = 'pointer';
+               document.getElementById('cop').addEventListener('click', () => {
+                   const refCodeText = user.myRefCode;
+                   navigator.clipboard.writeText(refCodeText).then(() => {
+                       alert('Ref code copied to clipboard!');
+                   }).catch(err => {
+                       console.error('Failed to copy: ', err);
+                   });
+               });
+           }
+           // show admin controls if admin obj exists
+           if (localStorage.getItem('admin')) {
+               document.getElementById('adminControls').style.display = 'block';
+           }
+       } 
+       // Logout functionality
+       document.getElementById('logout').addEventListener('click', () => { 
+           window.location.href = './index.html';
+       });
+
+       // Hamburger menu toggle
+       const hamburger = document.getElementById('hamburger');
+       const sidebar = document.getElementById('sidebar');
+       const overlay = document.getElementById('overlay');
+       const logoutLink = document.getElementById('logout-link');
+
+       hamburger.addEventListener('click', () => {
+           sidebar.style.left = '0';
+           overlay.style.display = 'block';
+       }); 
+       overlay.addEventListener('click', () => {
+           sidebar.style.left = '-300px';
+           overlay.style.display = 'none';
+       }); 
+       logoutLink.addEventListener('click', (e) => {
+           e.preventDefault(); 
+           window.location.href = './index.html';
+       });
+
+        // Initialize TradingView widget
+        new TradingView.widget({
+            "width": "98%",
+            "height": 400,
+            "symbol": "BINANCE:BTCUSDT",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "black",
+            "style": "1",
+            "locale": "en",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview-widget"
+        });
+   </script>
+   <script src="./dash.js"></script>
+</body>
+</html>

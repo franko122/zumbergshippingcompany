@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link rel="icon" href="img/cert.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: white; font-family: Arial, sans-serif;">
+    <br>
+    <div style="text-align: center;">
+        <h1 style="color: #333;">Account Details</h1>
+        <div id="accountDetails" style="max-width: 600px; margin: 20px auto; text-align: left; background: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+            <!-- Details will be populated here -->
+        </div>
+        <button onclick="window.location.href='./dash.html'" style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px;">Back to Dashboard</button>
+    </div>
+    <script>
+        // Check if user is logged in
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) {
+            window.location.href = './login.html';
+        } else {
+            // Populate account details
+            const earning = localStorage.getItem('earning') || '0';
+            const detailsDiv = document.getElementById('accountDetails');
+            detailsDiv.innerHTML = `
+                <h2 style="color: #007bff;">User Information</h2>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><strong>Name:</strong> ${user.name || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Email:</strong> ${user.email || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Bitcoin Wallet:</strong> ${user.bitcoinWallet || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Ethereum Wallet:</strong> ${user.ethWallet || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Doge Address:</strong> ${user.dogeAddress || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Referral Code:</strong> ${user.myRefCode || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Who Referred Code:</strong> ${user.whorefcode || 'N/A'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Balance:</strong> $${user.balance  }</li>
+                    <li style="margin-bottom: 10px;"><strong>Earning:</strong> $${earning}</li>
+                    <li style="margin-bottom: 10px;"><strong>Admin:</strong> ${user.isAdmin ? 'Yes' : 'No'}</li>
+                    <li style="margin-bottom: 10px;"><strong>Created At:</strong> ${user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}</li>
+                </ul>
+            `;
+        }
+    </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6931c983b40f0c197a3061c9/1jbl7mcoa';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

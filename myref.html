@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Ref</title>
+    <link rel="icon" href="img/cert.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: white; font-family: Arial, sans-serif;">
+    <br>
+    <div style="text-align: center;">
+        <h1 style="color: #333;">My Referral Code</h1>
+        <p style="color: #666;">Share your referral code with friends!</p>
+        <div style="margin: 20px auto; max-width: 400px;">
+            <input type="text" id="refCodeInput" readonly style="width: 70%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px;">
+            <button id="copyButton" style="padding: 10px 20px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Copy</button>
+        </div>
+        <p id="copyMessage" style="color: green; display: none;">Referral code copied to clipboard!</p>
+          <button id="move" onclick="window.location.href='/dash.html'" style="padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 20px;">Back to Dashboard</button>
+    </div>
+    <script>
+        const move = document.getElementById("move");
+        move.addEventListener("click",()=>{
+            window.location="./dash.html"
+        })
+          if (!localStorage.getItem('user')) {
+           window.location.href = './login.html';
+       }
+        // Get refCode from user object in localStorage
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.myRefCode) {
+            document.getElementById('refCodeInput').value = user.myRefCode;
+        }
+        // Copy functionality
+        document.getElementById('copyButton').addEventListener('click', () => {
+            const refCodeInput = document.getElementById('refCodeInput');
+            refCodeInput.select();
+            document.execCommand('copy');
+            document.getElementById('copyMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('copyMessage').style.display = 'none';
+            }, 2000);
+        });
+    </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6931c983b40f0c197a3061c9/1jbl7mcoa';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
