@@ -1,84 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
-<link rel="stylesheet" href="./style.css">
-</head>
-<body style="background-color:white;">
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipment Details</title>
+
 <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-.nowx{
-    padding:15px 40px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
-    background:linear-gradient(45deg,#ff4b2b,#ff416c);
-    color:white;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
+    body{
+        background: #f4f7fb;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        min-height:100vh;
+    }
 
-.nowx:hover{
-    transform:scale(1.05);
-    box-shadow:0 8px 20px rgba(0,0,0,0.3);
-}
+    .container{
+        width:95%;
+        max-width:600px;
+        background:#fff;
+        border-radius:15px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.1);
+        overflow:hidden;
+    }
 
-.nowx:active{
-    transform:scale(0.95);
-}
+    .header{
+        background: linear-gradient(135deg,#28a745,#00c851);
+        color:white;
+        text-align:center;
+        padding:20px;
+        font-size:18px;
+        font-weight:600;
+    }
+
+    .image-box img{
+        width:100%;
+        height:200px;
+        object-fit:cover;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .info{
+        margin-bottom:15px;
+        padding:10px 15px;
+        background:#f9f9f9;
+        border-radius:10px;
+        font-size:14px;
+    }
+
+    .info strong{
+        color:#28a745;
+    }
+
+    .btn-container{
+        text-align:center;
+        margin-top:25px;
+    }
+
+    .nowx{
+        padding:14px 35px;
+        font-size:16px;
+        border:none;
+        border-radius:30px;
+        background:linear-gradient(45deg,#ff4b2b,#ff416c);
+        color:white;
+        cursor:pointer;
+        transition:0.3s;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .nowx:hover{
+        transform:translateY(-3px);
+        box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .footer{
+        text-align:center;
+        font-size:12px;
+        color:#888;
+        padding:10px;
+    }
+
 </style>
-     <h2 style="color:green; text-align:center;">
-          Package  shipped from <br>  Uk to 26, MTB centre Corporate Branch, MTB Centre, Gulshan Avenue, Dhaka-1212, Bangladesh 🇧🇩  successfully 
-     </h2>
-    <div style="  border-radius:4px; width:95%; margin:auto; background-Color:green; height:160px;">
-         <img src="./mm.jpg" style="border-radius: 10px;"  width="100%" alt="">
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-        
-    <br>
-    <br>
-    <h5 style="color:green; text-align:center;">
-      Sender's name : Ethan Peter 
-        <br>
-        <hr>
-Sending from: UK
-<br>
-        <hr>
-Name: Sabiha Aktar
-<br>
-        <hr>
-Mobile:+8801916975908
-<br>
-        <hr>
-Email address: sabihaaktar30@gmail.com
-<br>
-        <hr>
-Address: 26, MTB centre Corporate Branch, MTB Centre, Gulshan Avenue, Dhaka-1212, Bangladesh 🇧🇩
-<br>
-        <hr>
-Country: Bangladesh 
-<br>
-        <hr>
+</head>
 
-Departure date: 5/3/2026 
-<br>
-        <hr>
-Arrival date: 8/ 3 /2026
-        <br>
-        <br>
-        <br>
-        <div>
-                       <a href="https://share.google/OEtkggRsAFzh8bGKy"> <button class="nowx">Track on map  now</button></a>
-                </div> 
-    </h5>
-    <!--Start of Tawk.to Script-->
+<body>
+
+<div class="container">
+
+    <div class="header">
+        📦 Package shipped successfully from UK to Bangladesh 🇧🇩
+    </div>
+
+    <div class="image-box">
+        <img src="./mm.jpg" alt="Shipment Image">
+    </div>
+
+    <div class="content">
+
+        <div class="info"><strong>Sender:</strong> Ethan Peter</div>
+        <div class="info"><strong>From:</strong> UK</div>
+        <div class="info"><strong>Receiver:</strong> Sabiha Aktar</div>
+        <div class="info"><strong>Phone:</strong> +8801916975908</div>
+,        <div class="info"><strong>Email:</strong> sabihaaktar30@gmail.com</div>
+        <div class="info"><strong>Address:</strong> 26, MTB Centre, Gulshan Avenue, Dhaka-1212</div>
+        <div class="info"><strong>Country:</strong> Bangladesh</div>
+        <div class="info"><strong>Departure:</strong> 5/3/2026</div>
+        <div class="info"><strong>Arrival:</strong> 8/3/2026</div>
+
+        <div class="btn-container">
+            <a href="https://share.google/OEtkggRsAFzh8bGKy">
+                <button class="nowx">📍 Track on Map</button>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Shipment Tracking System © 2026
+    </div>
+
+</div>
+
+<!-- Tawk.to Script -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -90,6 +143,6 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
-<!--End of Tawk.to Script-->
+
 </body>
-</html>
+    </html>
