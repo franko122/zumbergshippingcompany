@@ -14,7 +14,7 @@
             100% { transform: rotate(360deg); }
         }
 
-       .crypto-chart {
+      .crypto-chart {
             background: black;
             color: white;
             padding: 20px;
@@ -23,7 +23,7 @@
             text-align: center;
         }
 
-       .crypto-chart h2 {
+      .crypto-chart h2 {
             color: white;
             margin-bottom: 20px;
         }
@@ -59,7 +59,7 @@
     <div id="overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; z-index: 998;"></div>
 
     <div style="text-align: center;">
-        <b>Welcome <b id="frank"></b></b>
+        <b>Welcome <span id="frank"></span></b>
     </div>
     <br>
 
@@ -88,19 +88,14 @@
 
     <div class="today">
         <div class="lance">
-            <b>
-                <a href="/depo.html" style="color: black; text-decoration: none;">
-                    <i class="fas fa-plus-circle"></i> Make a Deposit
-                </a>
-            </b>
-            <br>
+            <a href="/depo.html" style="color: black; text-decoration: none;">
+                <i class="fas fa-plus-circle"></i> Make a Deposit
+            </a>
         </div>
         <div class="lance">
-            <b>
-                <a href="/withdraw.html" style="color: black; text-decoration: none;">
-                    Withdrawal now
-                </a>
-            </b>
+            <a href="/withdraw.html" style="color: black; text-decoration: none;">
+                Withdrawal now
+            </a>
         </div>
     </div>
     <br>
@@ -108,42 +103,38 @@
     <div class="today">
         <div class="lance">
             <a href="/accde.html" style="color: black; text-decoration: none;">
-                <b><i class="fas fa-user"></i> Account Details</b>
+                <i class="fas fa-user"></i> Account Details
             </a>
-            <br>
         </div>
         <div class="lance">
             <a href="/myref.html" style="color: black; text-decoration: none;">
-                <b>My Ref Code</b>
+                My Ref Code
             </a>
         </div>
     </div>
 
     <br>
     <div class="today">
-        <div class="lancess">
+        <div class="lance">
             <button id="refresh" style="background: none; border: none; color: inherit; font-weight: bold; cursor: pointer; margin-right: 20px;">
                 <i class="fas fa-rotate"></i> Update Account
             </button>
-            <br>
         </div>
-        <div class="lances">
-            <a href="index.html" style="color:white; underline:none;">
-<button id="logouht" style="background: none; border: none; color: inherit; font-weight: bold; cursor: pointer;">
-                <i class="fas fa-sign-out-alt"></i> Log Out
-            </button>
-                
+        <div class="lance">
+            <a href="index.html" style="color:white; text-decoration:none;">
+                <button id="logouht" style="background: none; border: none; color: inherit; font-weight: bold; cursor: pointer;">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </button>
             </a>
-            <br>
         </div>
     </div>
 
     <br>
     <div class="todays">
         <div id="adminControls" style="text-align: center; display: none;">
-            <button style="background: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer;">
-                <a href="/admin.html" style="color: white; text-decoration: none;">Admin Control</a>
-            </button>
+            <a href="/admin.html" style="background: #007bff; color: white; border: none; padding: 10px 20px; cursor: pointer; text-decoration: none; display: inline-block;">
+                Admin Control
+            </a>
         </div>
     </div>
 
@@ -175,32 +166,29 @@
     <!--End of Tawk.to Script-->
 
     <script>
-        // Hide loading div after 2 seconds when page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loadingDiv').style.display = 'none';
             }, 2000);
         });
 
-        // Validate if user exists in localStorage, redirect to create acc page if not
         if (!localStorage.getItem('user')) {
             window.location.href = './register.html';
         }
 
-        // Get user data from localStorage
         const user = JSON.parse(localStorage.getItem('user'));
         if (user) {
             if (user.name) {
-                document.getElementById('frank').innerHTML = user.name;
+                document.getElementById('frank').innerText = user.name;
             }
             if (user.balance!== undefined) {
-                document.getElementById('balancer').innerHTML = user.balance;
+                document.getElementById('balancer').innerText = user.balance;
             }
             if (user.earning!== undefined) {
-                document.getElementById('earnings').innerHTML = user.earning;
+                document.getElementById('earnings').innerText = user.earning;
             }
             if (user.myRefCode) {
-                document.getElementById('refCode').innerHTML = user.myRefCode;
+                document.getElementById('refCode').innerText = user.myRefCode;
                 document.getElementById('cop').style.cursor = 'pointer';
                 document.getElementById('cop').addEventListener('click', () => {
                     const refCodeText = user.myRefCode;
@@ -216,13 +204,12 @@
             }
         }
 
-        // Logout functionality
+        // Logout functionality - left exactly as yours
         document.getElementById('logout').addEventListener('click', () => {
-            localStorage.removeItem('user'); // optional: clear session
+            localStorage.removeItem('user');
             window.location.href = './index.html';
         });
 
-        // Hamburger menu toggle
         const hamburger = document.getElementById('hamburger');
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');
@@ -238,16 +225,14 @@
         });
         logoutLink.addEventListener('click', (e) => {
             e.preventDefault();
-            localStorage.removeItem('user'); // optional
+            localStorage.removeItem('user');
             window.location.href = './index.html';
         });
 
-        // Refresh button - reload data
         document.getElementById('refresh').addEventListener('click', () => {
             location.reload();
         });
 
-        // Initialize TradingView widget
         new TradingView.widget({
             "width": "98%",
             "height": 400,
