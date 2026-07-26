@@ -238,24 +238,48 @@
         });
 
         // Refresh button - reload data
-        document.getElementById('refresh').addEventListener('click', () => {
-            
-const userEarning = "0$";
-const userBalance = "0$";
+// 1. Get user from localStorage
+function getUser() {
+  return JSON.parse(localStorage.getItem("user")) || {};
+}
 
-// Get existing user object from localStorage or create new one
-let user = JSON.parse(localStorage.getItem("user")) || {};
+// 2. Return earning and balance based on username
+function getUserValues(username) {
+  switch(username) {
+    case "echezona":
+      return { earning: "5000$", balance: "12000$" };
+    case "frandevloper":
+      return { earning: "3000$", balance: "8000$" };
+    default:
+      return { earning: "0$", balance: "0$" };
+  }
+}
 
-// Insert/update the values
-user.earning = userEarning;
-user.balance = userBalance;
+// 3. Save updated user back to localStorage
+function updateUser(user) {
+  localStorage.setItem("user", JSON.stringify(user));
+}
 
-// Save back to localStorage
-localStorage.setItem("user", JSON.stringify(user));
-location.reload()
-alert("User updated ", user);
-                       
-        });
+// 4. Main click handler
+function handleRefresh() {
+  const user = getUser();
+
+  // Get values based on username
+  const { earning, balance } = getUserValues(user.username);
+
+  // Update user object
+  user.earning = earning;
+  user.balance = balance;
+
+  // Save and notify
+  updateUser(user);
+
+  alert("User updated: " + JSON.stringify(user));
+  location.reload();
+}
+
+// 5. Attach event listener
+document.getElementById('refresh').addEventListener('click', handleRefresh);
 
         // Initialize TradingView widget
         new TradingView.widget({
