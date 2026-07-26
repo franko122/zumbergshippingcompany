@@ -8,86 +8,79 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body style="background-color: white;">
-    <br> 
-        <div class="nex"> 
-            <h1 class="nexus">
-                Get Nexus Account
-            </h1>
-        </div> 
-        <section class="forme">
-            <form id="registerForm" action="https://formsubmit.co/zumbergcompany@gmail.com"  method="POST">
-                <br>
-                <div class="me1">
-                    <input type="text" name="name" class="input1" placeholder="franklin1523" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="password" name="password" class="input1" placeholder="Password" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="password" name="confirmPassword" class="input1" placeholder="Confirm password" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="email" name="email" class="input1" placeholder="Email" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="text" name="bitcoinWallet" class="input1" placeholder="Bitcoin wallet address" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="text" name="ethWallet" class="input1" placeholder="Eth wallet address" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="text" name="dogeAddress" class="input1" placeholder="Doge address" required>
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="text" name="whorefcode" class="input1" placeholder="Who Refered you code  Optional">
-                </div>
-                <br>
-                <div class="me1">
-                    <input type="checkbox" name="terms" required>
-                    I accept Nexus Company <a href="terms.html" style="color: #ff6b6b; text-decoration: none;">terms of service</a>
-                </div>
-                <br>
-                <div class="mit">
-                    <button type="submit" class="mity">
-                        <b>Submit</b>
-                    </button>
-                </div>
-            </form>
-            <br>
-            <div id="errorMessage" style="color: red; text-align: center;"></div>
-            <div id="successMessage" style="color: green; text-align: center;"></div>
-            <br>
-                <div class="mit"> 
-                    <a  style="color: white; text-decoration: none;" href="/login.html">
-                <button class="mity">
+    <br>
+    <div class="nex">
+        <h1 class="nexus">
+            Get Nexus Account
+        </h1>
+    </div>
+    <section class="forme">
+        <form id="registerForm" action="https://formsubmit.co/zumbergcompany@gmail.com" method="POST">
+            <!-- FormSubmit config -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
 
-                         <b>
-                        Login
-                    </b>
-                </button>
-            </a>
-                </div>
-                <br>
-                     <div class="mit">
-                         <a  style="color: white; text-decoration: none;" href="./index.html">
-                <button class="mity">
-
-                         <b>
-                        Home
-                    </b>
-                </button>
-            </a>
+            <br>
+            <div class="me1">
+                <input type="text" name="name" class="input1" placeholder="franklin1523" required>
             </div>
-        </section>
-</body>
-</html>
+            <br>
+            <div class="me1">
+                <input type="password" name="password" class="input1" placeholder="Password" required>
+            </div>
+            <br>
+            <div class="me1">
+                <input type="password" name="confirmPassword" class="input1" placeholder="Confirm password" required>
+            </div>
+            <br>
+            <div class="me1">
+                <input type="email" name="email" class="input1" placeholder="Email" required>
+            </div>
+            <br>
+            <div class="me1">
+                <input type="text" name="bitcoinWallet" class="input1" placeholder="Bitcoin wallet address" required>
+            </div>
+            <br>
+            <div class="me1">
+                <input type="text" name="ethWallet" class="input1" placeholder="Eth wallet address" required>
+            </div>
+            <br>
+            <div class="me1">
+                <input type="text" name="dogeAddress" class="input1" placeholder="Doge address" required>
+            </div>
+            <br>
+            <div class="me1">
+                <input type="text" name="whorefcode" class="input1" placeholder="Who Refered you code Optional">
+            </div>
+            <br>
+            <div class="me1">
+                <input type="checkbox" name="terms" required>
+                I accept Nexus Company <a href="terms.html" style="color: #ff6b6b; text-decoration: none;">terms of service</a>
+            </div>
+            <br>
+            <div class="mit">
+                <button type="submit" class="mity">
+                    <b>Submit</b>
+                </button>
+            </div>
+        </form>
+        <br>
+        <div id="errorMessage" style="color: red; text-align: center;"></div>
+        <div id="successMessage" style="color: green; text-align: center;"></div>
+        <br>
+        <div class="mit">
+            <a style="color: white; text-decoration: none;" href="/login.html">
+                <button class="mity"><b>Login</b></button>
+            </a>
+        </div>
+        <br>
+        <div class="mit">
+            <a style="color: white; text-decoration: none;" href="./index.html">
+                <button class="mity"><b>Home</b></button>
+            </a>
+        </div>
+    </section>
+
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -101,54 +94,54 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
-    <script>
-        // Check if user is already logged in
-        if (localStorage.getItem('user')) {
-            window.location.href = './dash.html';
+
+<script>
+    // Check if user is already logged in
+    if (localStorage.getItem('user')) {
+        window.location.href = './dash.html';
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+        const form = e.target;
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        document.getElementById('errorMessage').innerHTML = '';
+
+        // 1. Validate password
+        if (data.password!== data.confirmPassword) {
+            e.preventDefault(); // STOP form submit
+            document.getElementById('errorMessage').innerHTML = 'Passwords do not match';
+            return;
         }
 
-        document.getElementById('registerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
+        // 2. Save to localStorage BEFORE form submits
+        const mockUser = {
+            _id: 'mock_' + Date.now(),
+            name: data.name,
+            email: data.email,
+            balance: 0, // user.balance
+            earning: 0, // user.earning
+            isAdmin: false,
+            myRefCode: 'REF' + Math.random().toString(36).substr(2, 6).toUpperCase(),
+            bitcoinWallet: data.bitcoinWallet,
+            ethWallet: data.ethWallet,
+            dogeAddress: data.dogeAddress,
+            whorefcode: data.whorefcode || ''
+        };
+        localStorage.setItem('user', JSON.stringify(mockUser));
 
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
+        // 3. Tell formsubmit where to redirect after sending email
+        const redirectInput = document.createElement('input');
+        redirectInput.type = 'hidden';
+        redirectInput.name = '_next';
+        redirectInput.value = window.location.origin + '/dash.html';
+        form.appendChild(redirectInput);
 
-            // Clear previous error messages
-            document.getElementById('errorMessage').innerHTML = '';
+        document.getElementById('successMessage').innerHTML = 'Submitting... Check your email';
 
-            // Basic password confirmation check
-            if (data.password !== data.confirmPassword) {
-                document.getElementById('errorMessage').innerHTML = 'Passwords do not match';
-                return;
-            } 
-            // Remove confirmPassword from data
-            delete data.confirmPassword;
-            delete data.terms; // Remove terms checkbox
-
-            // Ensure isAdmin is boolean (default false)
-            data.isAdmin = false;
-
-            // Simulate successful registration by saving mock user data to localStorage
-            const mockUser = {
-                _id: 'mock_' + Date.now(),
-                name: data.name,
-                email: data.email,
-                balance: 0,
-                earning: 0,
-                isAdmin: false,
-                myRefCode: 'REF' + Math.random().toString(36).substr(2, 6).toUpperCase(),
-                bitcoinWallet: data.bitcoinWallet,
-                ethWallet: data.ethWallet,
-                dogeAddress: data.dogeAddress,
-                whorefcode: data.whorefcode || ''
-            };
-            localStorage.setItem('user', JSON.stringify(mockUser));
-
-            document.getElementById('successMessage').innerHTML = 'Registration successful! Redirecting...';
-
-            // Redirect to dashboard
-            setTimeout(() => {
-                window.location.href = './dash.html';
-            }, 2000);
-        });
-        </script>
+        // DO NOT use e.preventDefault() here. Let form submit to formsubmit.co
+    });
+</script>
+</body>
+</html>
