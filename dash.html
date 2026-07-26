@@ -173,57 +173,63 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
-
-    <script>
-        // Hide loading div after 2 seconds when page loads
-        window.addEventListener('load', () => {
+<script>
+    // Hide loading div after 2 seconds when page loads
+    window.addEventListener('load', () => {
+        const loadingDiv = document.getElementById('loadingDiv');
+        if (loadingDiv) {
             setTimeout(() => {
-                document.getElementById('loadingDiv').style.display = 'none';
+                loadingDiv.style.display = 'none';
             }, 2000);
-        });
-
-        // Validate if user exists in localStorage, redirect to create acc page if not
-        if (!localStorage.getItem('user')) {
-            window.location.href = './register.html';
         }
+    });
 
-        // Get user data from localStorage
-        const user = JSON.parse(localStorage.getItem('user'));
-        if (user) {
-            if (user.name) {
-                document.getElementById('frank').innerHTML = user.name;
-            }
-            if (user.balance!== undefined) {
-                document.getElementById('balancer').innerHTML = user.balance;
-            }
-            if (user.earning!== undefined) {
-                document.getElementById('earnings').innerHTML = user.earning;
-            }
-            if (user.myRefCode) {
-                document.getElementById('refCode').innerHTML = user.myRefCode;
-                document.getElementById('cop').style.cursor = 'pointer';
-                document.getElementById('cop').addEventListener('click', () => {
-                    const refCodeText = user.myRefCode;
-                    navigator.clipboard.writeText(refCodeText).then(() => {
+    // Validate if user exists in localStorage, redirect to create acc page if not
+    if (!localStorage.getItem('user')) {
+        window.location.href = './register.html';
+    }
+
+    // Get user data from localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+        const frankEl = document.getElementById('frank');
+        if (frankEl && user.name) frankEl.innerHTML = user.name;
+
+        const balancerEl = document.getElementById('balancer');
+        if (balancerEl && user.balance !== undefined) balancerEl.innerHTML = user.balance;
+
+        const earningsEl = document.getElementById('earnings');
+        if (earningsEl && user.earning !== undefined) earningsEl.innerHTML = user.earning;
+
+        const refCodeEl = document.getElementById('refCode');
+        const copEl = document.getElementById('cop');
+        if (refCodeEl && user.myRefCode) {
+            refCodeEl.innerHTML = user.myRefCode;
+            if (copEl) {
+                copEl.style.cursor = 'pointer';
+                copEl.addEventListener('click', () => {
+                    navigator.clipboard.writeText(user.myRefCode).then(() => {
                         alert('Ref code copied to clipboard!');
                     }).catch(err => {
                         console.error('Failed to copy: ', err);
                     });
                 });
             }
-            if (localStorage.getItem('admin')) {
-                document.getElementById('adminControls').style.display = 'block';
-            }
         }
 
+        const adminControlsEl = document.getElementById('adminControls');
+        if (adminControlsEl && localStorage.getItem('admin')) {
+            adminControlsEl.style.display = 'block';
+        }
+    }
 
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const logoutLink = document.getElementById('logout-link');
 
-        // Hamburger menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
-        const logoutLink = document.getElementById('logout-link');
-
+    if (hamburger && sidebar && overlay) {
         hamburger.addEventListener('click', () => {
             sidebar.style.left = '0';
             overlay.style.display = 'block';
@@ -232,33 +238,20 @@
             sidebar.style.left = '-300px';
             overlay.style.display = 'none';
         });
+    }
+    
+    if (logoutLink) {
         logoutLink.addEventListener('click', (e) => {
             e.preventDefault();
             localStorage.removeItem('user'); // optional
             window.location.href = './index.html';
         });
+    }
 
-        // Refresh button - reload data
-        document.getElementById('refresh').addEventListener('click', () => {
-            
-const userEarning = 55;
-const userBalance = 33;
+    // REMOVED: Refresh button code that was causing null error
 
-// Get existing user object from localStorage or create new one
-let user = JSON.parse(localStorage.getItem("user")) || {};
-
-// Insert/update the values
-user.earning = userEarning;
-user.balance = userBalance;
-
-// Save back to localStorage
-localStorage.setItem("user", JSON.stringify(user));
-location.reload()
-alert("User updated ", user);
-                       
-        });
-
-        // Initialize TradingView widget
+    // Initialize TradingView widget
+    if (typeof TradingView !== 'undefined') {
         new TradingView.widget({
             "width": "98%",
             "height": 400,
@@ -273,7 +266,9 @@ alert("User updated ", user);
             "allow_symbol_change": true,
             "container_id": "tradingview-widget"
         });
-    </script>
+    }
+</script>
+    
     <script src="./dash.js"></script>
 </body>
 </html>
