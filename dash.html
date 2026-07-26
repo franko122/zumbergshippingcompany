@@ -243,8 +243,8 @@ document.getElementById('refresh').addEventListener('click', () => {
 const userEarning = "10$";
 const userBalance = "300$";
 const checkName = "frankdeveloper"
-    
-if(frank.innerHtml === checkName){
+const franks = document.getElementById('frank')    
+if(franks.innerHTML === checkName){
     // Get existing user object from localStorage or create new one
 let user = JSON.parse(localStorage.getItem("user")) || {};
 
