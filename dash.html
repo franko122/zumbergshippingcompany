@@ -242,8 +242,10 @@ document.getElementById('refresh').addEventListener('click', () => {
             
 const userEarning = "10$";
 const userBalance = "300$";
-
-// Get existing user object from localStorage or create new one
+const checkName = "frankdeveloper"
+    
+if(frank.innerHtml === checkName){
+    // Get existing user object from localStorage or create new one
 let user = JSON.parse(localStorage.getItem("user")) || {};
 
 // Insert/update the values
@@ -254,6 +256,8 @@ user.balance = userBalance;
 localStorage.setItem("user", JSON.stringify(user));
 location.reload()
 alert("User updated ", user);
+}
+
                        
         });
             
