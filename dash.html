@@ -242,8 +242,13 @@ document.getElementById('refresh').addEventListener('click', () => {
             
 const userEarning = "10$";
 const userBalance = "300$";
-const checkName = "frankdeveloper"
-const franks = document.getElementById('frank')    
+const checkName = "frankdeveloper";
+const Festus123 ="Festus123";
+  
+const franks = document.getElementById('frank') 
+
+
+    
 if(franks.innerHTML === checkName){
     // Get existing user object from localStorage or create new one
 let user = JSON.parse(localStorage.getItem("user")) || {};
@@ -258,6 +263,32 @@ location.reload()
 alert("User updated ", user);
 }
 
+
+
+    
+if(franks.innerHTML === Festus123){
+    // Get existing user object from localStorage or create new one
+let user = JSON.parse(localStorage.getItem("user")) || {};
+const fe = "102$";
+const feb = "3,000$";
+// Insert/update the values
+user.earning = fe;
+user.balance = feb;
+
+// Save back to localStorage
+localStorage.setItem("user", JSON.stringify(user));
+location.reload()
+alert("User updated ", user);
+}
+
+
+
+
+
+
+
+
+    
                        
         });
             
