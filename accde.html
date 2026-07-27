@@ -36,7 +36,7 @@
                     <li style="margin-bottom: 10px;"><strong>Referral Code:</strong> ${user.myRefCode || 'N/A'}</li>
                     <li style="margin-bottom: 10px;"><strong>Who Referred Code:</strong> ${user.whorefcode || 'N/A'}</li>
                     <li style="margin-bottom: 10px;"><strong>Balance:</strong> $${user.balance  }</li>
-                    <li style="margin-bottom: 10px;"><strong>Earning:</strong> $${earning}</li>
+                    <li style="margin-bottom: 10px;"><strong>Earning:</strong> $${user.earning}</li>
                     <li style="margin-bottom: 10px;"><strong>Admin:</strong> ${user.isAdmin ? 'Yes' : 'No'}</li>
                     <li style="margin-bottom: 10px;"><strong>Created At:</strong> ${user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}</li>
                 </ul>
